@@ -1,1 +1,3 @@
 .netlify/
+.tools/
+gh_*_windows_amd64.zip
