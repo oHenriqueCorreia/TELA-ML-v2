@@ -619,4 +619,112 @@ Olha ela é boa porém pequena, dá para fazer 2 xícaras de arroz na maior.</p>
     });
   });
 </script>
+<style id="black-ofertas-mobile-layout">
+  @media (max-width: 920px) {
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { min-width: 0 !important; }
+
+    .nav-header,
+    .nav-header .nav-bounds,
+    .ui-vip-core,
+    .ui-vip-core-container--head,
+    .ui-vip-core-container--content-left,
+    .ui-vip-core-container--column__right,
+    .ui-pdp-container__col,
+    .ui-pdp-container__row { box-sizing: border-box; max-width: 100% !important; min-width: 0 !important; width: 100% !important; }
+
+    .nav-header { height: auto !important; min-height: 112px; }
+    .nav-header .nav-bounds { padding-left: 12px !important; padding-right: 12px !important; }
+    .nav-header-plus-logo { left: 12px !important; width: 112px !important; }
+    .nav-header-plus-logo img,
+    .nav-header-plus-logo svg { height: auto !important; max-width: 100% !important; }
+    .nav-header-plus-search { left: 136px !important; right: 12px !important; width: auto !important; }
+    .nav-header-plus-cp-wrapper,
+    .nav-header-plus-menu-wrapper { display: none !important; }
+    .nav-header-menu { margin: 66px 0 0 !important; overflow-x: auto; padding: 0 12px 10px !important; scrollbar-width: none; white-space: nowrap; width: 100% !important; }
+    .nav-header-menu::-webkit-scrollbar { display: none; }
+    .nav-header-menu-list { display: flex !important; gap: 18px; min-width: max-content; }
+
+    .ui-vip-core { margin: 0 auto !important; padding: 0 12px 32px !important; }
+    .ui-vip-core-container--head { display: block !important; margin: 0 !important; }
+    .ui-vip-core-container--content-left,
+    .ui-vip-core-container--column__right { display: block !important; float: none !important; margin: 0 !important; padding: 0 !important; position: static !important; }
+    .ui-vip-core-container--column__right { margin-top: 20px !important; }
+    .ui-pdp-container__row { flex-wrap: wrap !important; }
+    .ui-pdp--sticky-wrapper,
+    .ui-pdp--sticky-wrapper-right { display: block !important; float: none !important; height: auto !important; max-width: 100% !important; position: static !important; transform: none !important; width: 100% !important; }
+
+    .ui-pdp-container__row--gallery { min-height: 0 !important; }
+    .ui-pdp-gallery { display: block !important; height: auto !important; min-height: 0 !important; padding: 0 !important; width: 100% !important; }
+    .ui-pdp-gallery__column { display: none !important; }
+    .ui-pdp-gallery__figure { align-items: center !important; display: flex !important; height: min(82vw, 430px) !important; justify-content: center !important; margin: 0 !important; padding: 12px !important; width: 100% !important; }
+    .ui-pdp-gallery__figure__image { height: 100% !important; max-height: 100% !important; max-width: 100% !important; object-fit: contain !important; position: static !important; width: 100% !important; }
+    .ui-pdp-gallery__zoom-container { height: 100% !important; width: 100% !important; }
+
+    .ui-pdp-container__row--header,
+    .ui-pdp-container__row--price,
+    .ui-pdp-container__row--shipping-section,
+    .ui-pdp-container__row--main-actions,
+    .ui-pdp-container__row--seller-data,
+    .ui-pdp-container__row--buy-benefits { padding-left: 0 !important; padding-right: 0 !important; }
+    .ui-pdp-actions { width: 100% !important; }
+    .ui-pdp-actions .andes-button { width: 100% !important; }
+
+    .ui-vip-core-spot-middle,
+    .ui-pdp-description,
+    .ui-vpp-highlighted-specs,
+    .ui-review-capability { box-sizing: border-box; margin-left: 0 !important; margin-right: 0 !important; max-width: 100% !important; padding-left: 12px !important; padding-right: 12px !important; width: 100% !important; }
+    .ui-review-capability__rating,
+    .ui-review-capability__reviews,
+    .ui-review-capability-comments,
+    .ui-review-capability-comments__comment { box-sizing: border-box; float: none !important; margin-left: 0 !important; margin-right: 0 !important; max-width: 100% !important; position: static !important; width: 100% !important; }
+    img, video, iframe { max-width: 100%; }
+  }
+
+  @media (max-width: 520px) {
+    .nav-header-plus-logo { width: 100px !important; }
+    .nav-header-plus-search { left: 122px !important; }
+    .ui-pdp-gallery__figure { height: 86vw !important; }
+  }
+</style>
+<script id="black-ofertas-mobile-layout-script">
+  (function () {
+    if (!window.matchMedia('(max-width: 920px)').matches) return;
+
+    function applyMobileLayout() {
+      var gallery = document.querySelector('.ui-pdp-gallery__figure');
+      var purchase = document.querySelector('.ui-vip-core-container--column__right');
+      var page = document.querySelector('.ui-pdp-container--top');
+      if (!page || (!gallery && !purchase)) return;
+
+      var mobileProduct = document.querySelector('.black-ofertas-mobile-product');
+      if (!mobileProduct) {
+        mobileProduct = document.createElement('section');
+        mobileProduct.className = 'black-ofertas-mobile-product';
+        page.parentNode.insertBefore(mobileProduct, page);
+        if (gallery) mobileProduct.appendChild(gallery.cloneNode(true));
+        if (purchase) mobileProduct.appendChild(purchase.cloneNode(true));
+      }
+    }
+
+    applyMobileLayout();
+    document.addEventListener('DOMContentLoaded', applyMobileLayout);
+    [100, 500, 1500, 3000].forEach(function (delay) {
+      window.setTimeout(applyMobileLayout, delay);
+    });
+  })();
+</script>
+<style id="black-ofertas-mobile-product-style">
+  @media (max-width: 920px) {
+    .black-ofertas-mobile-product { box-sizing: border-box; display: flex; flex-direction: column; gap: 18px; margin: 0 auto 20px; max-width: 100%; padding: 0 12px; width: 100%; }
+    .black-ofertas-mobile-product .ui-pdp-gallery-container,
+    .black-ofertas-mobile-product .ui-vip-core-container--column__right { box-sizing: border-box; display: block !important; max-width: 100% !important; width: 100% !important; }
+    .black-ofertas-mobile-product .ui-pdp-gallery,
+    .black-ofertas-mobile-product .ui-pdp-gallery__figure,
+    .black-ofertas-mobile-product .ui-pdp-gallery__figure__image,
+    .black-ofertas-mobile-product .ui-pdp-container__row { opacity: 1 !important; visibility: visible !important; }
+    .black-ofertas-mobile-product .ui-pdp-container__row { display: block !important; height: auto !important; }
+    .black-ofertas-mobile-product .ui-vip-core-container--column__right { background: #fff; border-radius: 8px; padding: 18px !important; }
+  }
+</style>
 </body></html>

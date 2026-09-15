@@ -16,7 +16,28 @@
     .address-form-grid{display:grid;grid-template-columns:1fr 120px;gap:0 12px}
     .address-form-grid .wide{grid-column:1/-1}
     .address-summary{line-height:1.45}
-    @media(max-width:520px){.address-form-grid{grid-template-columns:1fr}.address-form-grid .wide{grid-column:auto}}
+    @media(max-width:520px){
+      html,body{max-width:100%;overflow-x:hidden}
+      .top-inner,.page,.foot-inner{width:calc(100% - 24px)}
+      .top-inner{padding:0}
+      .contact{display:none}
+      .page,.main,aside,.card,.summary,.product>div{min-width:0}
+      .page{gap:8px;padding:26px 0}
+      .main h1{font-size:24px;margin-bottom:22px}
+      .product{align-items:flex-start}
+      .product>div{overflow-wrap:anywhere}
+      .product img{flex:0 0 64px;height:64px;width:64px}
+      .card,.summary{border-radius:14px;padding:18px}
+      .tabs{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+      .tab{min-width:0;padding:10px 4px}
+      .address{overflow-wrap:anywhere;padding:14px}
+      .option{align-items:flex-start;min-width:0}
+      .option>span:not(.price):last-child{min-width:0;overflow-wrap:anywhere}
+      .option .price{white-space:nowrap}
+      .address-form-grid{grid-template-columns:1fr}
+      .address-form-grid .wide{grid-column:auto}
+      .dialog{max-height:calc(100vh - 24px);overflow-y:auto;padding:18px}
+    }
   </style>
 </head>
 <body>
