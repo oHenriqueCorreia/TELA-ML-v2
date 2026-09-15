@@ -6,17 +6,36 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <title>Finalização da compra — Projeto escolar</title>
   <style>
-    *{box-sizing:border-box}body{margin:0;background:#fff;color:#222;font:16px "Helvetica Neue",Helvetica,Arial,sans-serif;letter-spacing:-.1px}.demo{background:#222;color:#fff;padding:8px;text-align:center;font-size:13px;letter-spacing:0}.top{height:48px;background:#ffe600}.top-inner,.page,.foot-inner{width:min(1200px,calc(100% - 32px));margin:auto}.top-inner{height:100%;display:flex;align-items:center;justify-content:space-between}.school{font-weight:600}.contact{font-size:14px}.page{display:grid;grid-template-columns:minmax(0,808px) 360px;gap:32px;padding:32px 0}.main h1{font-size:24px;font-weight:600;margin:0 0 25px}.product{display:flex;gap:12px;align-items:center;margin-bottom:16px}.product img{width:72px;height:72px;object-fit:contain;background:#f5f5f5;border-radius:6px}.badge{background:#3483fa;color:#fff;font-size:11px;padding:4px 6px}.muted{color:#666;font-size:13px}.card,.summary{border:1px solid #ddd;border-radius:16px;padding:24px;margin-bottom:16px}.card h2,.summary h2{font-size:20px;font-weight:600;margin:0 0 16px}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#f5f5f5;border-radius:16px;margin-bottom:12px}.tab{border:0;background:transparent;padding:10px;font:inherit;cursor:pointer}.tab.active{background:white;border:2px solid #3483fa;border-radius:14px}.green{color:#00a650}.address{border:1px solid #3483fa;border-radius:12px;padding:16px;margin-bottom:28px}.address strong{display:block;margin-bottom:10px}.link{border:0;background:none;color:#3483fa;padding:0;cursor:pointer;font:inherit}.option{display:flex;align-items:center;gap:12px;padding:14px 0}.option input{width:18px;height:18px}.option .price{margin-left:auto}.pix-icon{width:40px;height:40px;border:1px solid #ddd;border-radius:50%;display:grid;place-items:center;color:#00a650;font-weight:bold}.summary{position:sticky;top:24px}.row{display:flex;justify-content:space-between;margin:16px 0}.total{border-top:1px solid #ddd;padding-top:16px;font-size:20px;font-weight:600}.buy{width:100%;margin-top:18px;border:0;border-radius:6px;background:#3483fa;color:#fff;padding:15px;font:600 15px inherit;cursor:pointer}.buy:disabled{opacity:.55;cursor:not-allowed}.notice{margin-top:12px;color:#666;font-size:12px;text-align:center}.modal{position:fixed;inset:0;background:#0008;display:none;place-items:center;padding:20px}.modal.open{display:grid}.dialog{background:#fff;border-radius:14px;padding:24px;width:min(480px,100%)}.dialog h2{margin-top:0}.dialog input{width:100%;padding:12px;border:1px solid #aaa;border-radius:6px;margin:6px 0 14px;font:inherit}.dialog-actions{display:flex;justify-content:flex-end;gap:10px}.foot{border-top:1px solid #ddd;margin-top:18px}.foot-inner{padding:22px 0;color:#666;font-size:12px}.foot-links{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px}.foot span{color:#333}.payment-demo{display:none;background:#f5f5f5;border-radius:10px;padding:16px;margin-top:16px;text-align:center}.payment-demo.show{display:block}.fake-code{display:block;overflow-wrap:anywhere;background:#fff;border:1px dashed #aaa;padding:10px;margin:12px 0;font:12px monospace}@media(max-width:850px){.page{grid-template-columns:1fr}.summary{position:static}.top-inner{padding:0 4px}.card{padding:18px}}
-    .top{height:58px}
-    .project-logo{display:block;width:148px;height:46px;object-fit:contain;object-position:left center}
-    .buy{font-family:inherit;font-size:15px;font-weight:600}
-    .copy-link{width:100%;border:1px solid #3483fa;border-radius:6px;background:#fff;color:#3483fa;padding:12px;font:600 14px inherit;cursor:pointer}
-    .copy-link:focus-visible{outline:3px solid rgba(52,131,250,.3);outline-offset:2px}
-    .copy-status{min-height:18px;margin:8px 0 0;color:#00a650;font-size:13px}
-    .address-form-grid{display:grid;grid-template-columns:1fr 120px;gap:0 12px}
-    .address-form-grid .wide{grid-column:1/-1}
-    .address-summary{line-height:1.45}
-    @media(max-width:520px){.address-form-grid{grid-template-columns:1fr}.address-form-grid .wide{grid-column:auto}}
+    :root{--blue:#0089ff;--green:#00b586;--ink:#181818;--border:#e9e9e9}
+    *{box-sizing:border-box}
+    body{margin:0;background:#fff;color:var(--ink);font:18px Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
+    button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #0089ff55;outline-offset:3px}
+    .page{display:grid;grid-template-columns:minmax(0,2.24fr) minmax(300px,1fr);align-items:start;gap:38px;width:min(1480px,calc(100% - 48px));margin:20px auto 80px}
+    .main,aside{min-width:0}.main h1{font-size:28px;line-height:1.25;font-weight:600;margin:0}
+    .product{display:flex;align-items:center;gap:16px;margin:28px 0;line-height:1.4}.product-image{display:block;flex:0 0 80px;width:80px;height:80px;object-fit:contain;border-radius:8px;background:#fff}.product-details{min-width:0}.product-name{font-size:19px}.muted{color:#888;font-size:16px}
+    .card,.summary{border:1px solid var(--border);box-shadow:0 0 0 1px #f6f6f6;border-radius:24px;background:#fff;padding:28px}
+    .card{margin-bottom:20px}.card h2,.summary h2{font-size:23px;line-height:1.3;font-weight:600;margin:0 0 20px}
+    .shipping-method{display:flex;align-items:center;justify-content:center;gap:8px;width:fit-content;min-width:180px;min-height:48px;border:1.5px solid var(--blue);border-radius:14px;padding:10px 20px;margin-bottom:16px;font-weight:600}.green{color:var(--green)}
+    .address{border:1.5px solid var(--blue);border-radius:16px;padding:18px;min-height:72px;margin-bottom:24px;display:grid;align-items:center;grid-template-columns:20px minmax(0,1fr);gap:10px}
+    .pin{width:20px;height:24px;color:var(--blue)}.address-details{min-width:0;padding-top:2px}.address strong{display:block;font-size:16px;font-weight:400;overflow-wrap:anywhere}.address strong:empty{display:none}.address strong:not(:empty){margin-bottom:10px}
+    .link{border:0;background:none;color:var(--blue);padding:0;font:inherit;text-align:left}.address .link{font-size:16px;font-weight:600;margin-top:0}.address:has(strong:not(:empty)) .link{margin-top:0}
+    .shipment-title{display:flex;align-items:center;gap:4px;margin:0 0 10px;font-size:20px;font-weight:600}.full{display:inline-flex;align-items:center;font-size:17px;font-style:italic;font-weight:800;color:var(--green)}.full svg{width:16px;height:24px}.chevron{margin-left:auto;width:10px;height:10px;border-top:1.5px solid var(--blue);border-left:1.5px solid var(--blue);transform:rotate(45deg)}
+    .option{display:flex;align-items:center;gap:14px;padding:12px 0;line-height:1.4}.option input{flex:0 0 auto;width:20px;height:20px;margin:0;accent-color:var(--blue);cursor:pointer}.delivery-label{min-width:0}.option .price{margin-left:auto;white-space:nowrap}.option .price.green{font-weight:600}
+    .payment-option{align-items:flex-start;margin-top:12px;gap:18px;cursor:pointer}.payment-option input{margin-top:17px}.pix-icon{width:48px;height:48px;border:1px solid var(--border);border-radius:50%;display:grid;place-items:center;flex:0 0 auto}.pix-icon svg{width:27px;height:27px;color:#00c3b5}.payment-label{display:flex;align-items:flex-start;flex-direction:column;gap:7px;font-size:16px}.pix-badge{background:#000;color:#fff;font-size:12px;font-weight:600;padding:5px 7px;border-radius:2px}.pix-benefit{color:var(--green);background:#e1f8ef;font-size:12px;font-weight:600;border-radius:12px;padding:4px 8px;margin-top:3px}
+    aside{align-self:stretch}.summary{position:sticky;top:20px}.summary h2{font-size:22px;margin-bottom:28px}.row{display:flex;align-items:baseline;justify-content:space-between;gap:14px;margin:18px 0;line-height:1.25}.row>span:first-child{min-width:0}.row>span:last-child{flex-shrink:0}.money{white-space:nowrap;font-variant-numeric:tabular-nums}.money sup{font-size:.58em;vertical-align:super;line-height:0;margin-left:1px}
+    .total{border-top:1px solid var(--border);padding-top:18px;margin-top:58px;font-size:22px;font-weight:600}.saving{text-align:right;color:var(--green);font-size:16px;line-height:1.5;margin:16px 0 4px}.free-shipping{text-align:right;color:var(--green);font-size:17px;margin:8px 0 26px}
+    .buy{display:block;width:100%;min-height:58px;border:0;border-radius:6px;background:var(--blue);color:#fff;padding:16px;font-size:18px;font-weight:600;text-align:center}.buy:hover{background:#0078e2}.buy:disabled{cursor:not-allowed;background:var(--blue)}.notice{font-size:12px;color:#888;text-align:center;margin:12px 0 0}
+    .copy-link{width:100%;border:1px solid var(--blue);border-radius:6px;background:#fff;color:var(--blue);padding:12px;font-size:14px;font-weight:600}.copy-status{min-height:18px;margin:8px 0 0;color:var(--green);font-size:13px}
+    .modal-open{overflow:hidden}.modal{position:fixed;inset:0;z-index:10;background:#0008;display:none;place-items:center;padding:20px}.modal.open{display:grid}.dialog{background:#fff;border-radius:18px;padding:24px;width:min(520px,100%);max-height:calc(100dvh - 40px);overflow-y:auto}.dialog h2{font-size:22px;margin:0 0 20px}.dialog label{font-size:14px;min-width:0}.dialog input{width:100%;padding:12px;border:1px solid #aaa;border-radius:6px;margin:6px 0 14px;font-size:16px}.dialog-actions{display:flex;align-items:center;justify-content:flex-end;gap:20px}.dialog-actions .buy{width:auto;min-height:48px;font-size:16px}.address-form-grid{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:0 12px}.address-form-grid .wide{grid-column:1/-1}.address-summary{line-height:1.45}
+    @media(min-width:1700px){.page{width:min(1660px,calc(100% - 48px));gap:44px}.card,.summary{padding:32px}}
+    @media(max-width:1050px){.page{gap:24px;grid-template-columns:minmax(0,1.7fr) minmax(280px,1fr)}.card,.summary{padding:22px}.row{font-size:16px}.total{font-size:20px}.option{font-size:16px}}
+    @media(max-width:800px){.page{grid-template-columns:minmax(0,1fr);width:calc(100% - 32px);margin:24px auto 40px;gap:4px}.main h1{font-size:25px}.product{gap:12px;margin:24px 0}.product-image{flex-basis:64px;width:64px;height:64px}.product-name{font-size:17px}.card,.summary{padding:22px;border-radius:20px}.card h2,.summary h2{font-size:21px}.summary{position:static}.total{margin-top:30px}.buy{min-height:54px}.summary h2{margin-bottom:24px}}
+    @media(max-width:400px){body{font-size:16px}.page{width:calc(100% - 24px)}.card,.summary{padding:18px}.address{padding:16px}.option{gap:10px}.shipment-option{flex-wrap:wrap}.shipment-option .delivery-label{flex:1 1 160px}.shipment-option .price{margin-left:30px}.payment-option{gap:12px}.address-form-grid{grid-template-columns:minmax(0,1fr)}.address-form-grid .wide{grid-column:auto}.dialog{padding:20px}.dialog-actions{gap:12px}.dialog-actions .buy{font-size:14px}}
+    .top{height:58px;background:#ffe600}.top-inner,.foot-inner{width:min(1480px,calc(100% - 48px));margin:auto}.top-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}.project-logo{display:block;width:148px;height:46px;object-fit:contain;object-position:left center}.contact{font-size:14px}.foot{border-top:1px solid #ddd;margin-top:18px}.foot-inner{padding:22px 0;color:#666;font-size:12px}.foot-links{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:12px}.foot span{color:#333}
+    .pix-dialog{width:min(460px,calc(100% - 32px));max-height:calc(100dvh - 32px);overflow-y:auto;border:1px solid var(--border);border-radius:22px;padding:28px;color:var(--ink);background:#fff;box-shadow:0 12px 60px #0002}.pix-dialog::backdrop{background:#0008}.pix-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:16px}.pix-dialog h2{margin:0;font-size:23px}.close-pix{width:40px;height:40px;flex:0 0 auto;border:0;border-radius:50%;background:#f5f5f5;font-size:26px;color:#555}.pix-total{font-size:30px;font-weight:600;margin:20px 0 10px}.pix-instructions{font-size:15px;line-height:1.5;color:#666}.pix-code-label{display:block;font-size:14px;font-weight:600;margin:20px 0 8px}.pix-code{display:block;resize:none;width:100%;min-height:104px;padding:12px;border:1px solid #ddd;border-radius:10px;background:#f8f9fa;color:#333;font:13px/1.5 monospace;overflow-wrap:anywhere;word-break:break-all}.pix-dialog .copy-link{margin-top:16px;border:0;background:var(--blue);color:#fff;min-height:52px;font-size:16px}.pix-dialog .copy-status{line-height:1.4;margin-top:12px}.pix-dialog .link{display:block;text-align:center;margin:14px auto 0;font-size:14px}
+    @media(min-width:1700px){.top-inner,.foot-inner{width:min(1660px,calc(100% - 48px))}}
+    @media(max-width:800px){.top-inner,.foot-inner{width:calc(100% - 32px)}}
+    @media(max-width:400px){.top-inner,.foot-inner{width:calc(100% - 24px)}.pix-dialog{padding:22px}.pix-dialog h2{font-size:21px}}
   </style>
 </head>
 <body>
@@ -24,47 +43,90 @@
   <div class="page">
     <main class="main">
       <h1>Finalize sua compra</h1>
-      <div class="product"><img src="https://http2.mlstatic.com/D_Q_NP_856339-MLB112052149369_052026-C-jogo-de-panelas-antiaderente-teflon-8-pecas-cereja.webp" alt="Jogo de panelas"><div><span class="badge">OFERTA</span><div>Jogo de Panelas Antiaderente 8 Peças Cereja</div><span class="muted">Cor: Cereja</span></div></div>
-      <section class="card"><h2>Forma de entrega</h2><div class="tabs"><button class="tab active" data-mode="Frete">Frete<br><span class="green">Grátis</span></button><button class="tab" data-mode="Retirada">Retirada<br><span class="green">Grátis</span></button></div><div class="address"><strong>📍 Região de entrega não definida</strong><button class="link" id="change-address">Escolher região</button></div><h3>Envio 1 <span class="green">⚡ FULL</span></h3><label class="option"><input type="radio" name="delivery" checked>Chegará em até 5 dias úteis <span class="price green">Grátis</span></label></section>
-      <section class="card"><h2>Meio de pagamento</h2><label class="option"><input type="radio" name="payment" value="pix"><span class="pix-icon">◆</span><span><strong>Pix</strong><br><small class="green">Confirmação rápida</small></span></label><p class="muted">Opção demonstrativa. Não serão solicitados nem processados dados financeiros.</p></section>
+      <div class="product"><img class="product-image" src="mini-produto-checkout.webp" alt="Jogo de panelas na cor cereja" width="80" height="80"><div class="product-details"><div class="product-name">Jogo De Panelas Antiaderente Teflon 8 Peças Cereja</div><span class="muted">Cor: Cereja</span></div></div>
+      <section class="card delivery-card" aria-labelledby="delivery-title">
+        <h2 id="delivery-title">Forma de entrega</h2>
+        <div class="shipping-method">Frete <span class="green">Grátis</span></div>
+        <div class="address"><svg class="pin" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a8 8 0 0 0-8 8c0 6 8 12 8 12s8-6 8-12a8 8 0 0 0-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg><div class="address-details"><strong></strong><button class="link" id="change-address" type="button">Alterar endereço</button></div></div>
+        <h3 class="shipment-title">Envio 1 <span class="full"><svg viewBox="0 0 16 24" fill="currentColor" aria-hidden="true"><path d="M7 0 1 13h6l-2 11L16 9H9l4-9Z"/></svg>FULL</span><span class="chevron" aria-hidden="true"></span></h3>
+        <label class="option shipment-option"><input type="radio" name="delivery" checked><span class="delivery-label">Chegará em até 5 dias úteis</span><span class="price green">Grátis</span></label>
+      </section>
+      <section class="card payment-card" aria-labelledby="payment-title">
+        <h2 id="payment-title">Meios de pagamento</h2>
+        <label class="option payment-option"><input type="radio" name="payment" value="pix" checked aria-label="Pagar com Pix"><span class="pix-icon"><svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="m13 3-6 6h3l5 5a1.5 1.5 0 0 0 2 0l5-5h3l-6-6a4.2 4.2 0 0 0-6 0Zm-9 9-1 1a4.2 4.2 0 0 0 0 6l1 1h5l5-5-5-3H4Zm24 0h-5l-5 4 5 4h5l1-1a4.2 4.2 0 0 0 0-6l-1-1ZM7 23l6 6a4.2 4.2 0 0 0 6 0l6-6h-3l-5-5a1.5 1.5 0 0 0-2 0l-5 5H7Z"/></svg></span><span class="payment-label"><span class="pix-badge">PAGUE MENOS</span><span>Pix</span><small class="pix-benefit">Confirmação rápida</small></span></label>
+      </section>
     </main>
-    <aside><section class="summary"><h2>Resumo da compra</h2><div class="row"><span>Produto</span><span>R$ 123,55</span></div><div class="row green"><span>Desconto</span><span>− R$ 63,65</span></div><div class="row"><span>Frete</span><span class="green">Grátis</span></div><div class="row total"><span>Total</span><span>R$ 59,90</span></div><button class="buy" id="finish" disabled>Selecionar Pix</button><div class="payment-demo" id="payment-demo"><strong>Pix demonstrativo</strong><span class="fake-code" id="payment-link">https://link.syncpayments.com.br/aNRZ8t</span><button class="copy-link" id="copy-payment-link" type="button">Copiar link</button><p class="copy-status" id="copy-status" role="status" aria-live="polite"></p><button class="link" id="close-payment">Voltar</button></div><p class="notice">Pagemento seguro e confiável.</p></section></aside>
+    <aside aria-label="Resumo da compra"><section class="summary">
+      <h2>Resumo da compra</h2>
+      <div class="row"><span>Produto</span><span class="money">R$ 123<sup>55</sup></span></div>
+      <div class="row"><span>Desconto do produto</span><span class="green">− <span class="money">R$ 63<sup>65</sup></span></span></div>
+      <div class="row"><span>Frete</span><span class="green">Grátis</span></div>
+      <div class="row total"><span>Total</span><span class="money">R$ 59<sup>90</sup></span></div>
+      <p class="saving">Você economizou <strong><span class="money">R$ 63<sup>65</sup></span></strong></p>
+      <p class="free-shipping">Frete grátis</p>
+      <button class="buy" id="finish" aria-haspopup="dialog" aria-controls="pix-modal">Pagar e finalizar</button>
+    </section></aside>
   </div>
   <footer class="foot"><div class="foot-inner"><div class="foot-links"><span>Termos do projeto</span><span>Privacidade</span><span>Acessibilidade</span><span>Contato</span></div>todos os direitos reservados.</div></footer>
   <div class="modal" id="address-modal" role="dialog" aria-modal="true" aria-labelledby="address-title"><form class="dialog" id="address-form"><h2 id="address-title">Informe o endereço de entrega</h2><div class="address-form-grid"><label class="wide">CEP<input id="cep" inputmode="numeric" maxlength="9" placeholder="00000-000" required></label><label>Rua ou avenida<input id="street" autocomplete="street-address" placeholder="Nome da rua" required></label><label>Número<input id="number" inputmode="numeric" placeholder="123" required></label><label>Complemento<input id="complement" placeholder="Apto, bloco etc."></label><label>Bairro<input id="district" placeholder="Seu bairro" required></label><label>Cidade<input id="city" placeholder="Sua cidade" required></label><label>Estado<input id="state" maxlength="2" placeholder="UF" required></label></div><div class="dialog-actions"><button type="button" class="link" id="cancel-address">Cancelar</button><button type="submit" class="buy">Usar este endereço</button></div></form></div>
+  <dialog class="pix-dialog" id="pix-modal" aria-labelledby="pix-title" aria-describedby="pix-instructions">
+    <div class="pix-dialog-header"><h2 id="pix-title">Pagamento via Pix</h2><button class="close-pix" id="close-payment" type="button" aria-label="Fechar pagamento">×</button></div>
+    <p class="pix-total">R$ 59,90</p>
+    <p class="pix-instructions" id="pix-instructions"></p>
+    <label class="pix-code-label" for="payment-code" id="payment-code-label"></label>
+    <textarea class="pix-code" id="payment-code" rows="4" readonly spellcheck="false"></textarea>
+    <button class="copy-link" id="copy-payment-link" type="button"></button>
+    <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+    <a class="link" id="open-payment-link" href="https://link.syncpayments.com.br/aNRZ8t" target="_blank" rel="noopener noreferrer">Abrir página do Pix</a>
+  </dialog>
   <script>
-    const modal=document.querySelector('#address-modal'),address=document.querySelector('.address strong'),addressButton=document.querySelector('#change-address'),finish=document.querySelector('#finish'),payment=document.querySelector('#payment-demo'),copyButton=document.querySelector('#copy-payment-link'),copyStatus=document.querySelector('#copy-status');
-    addressButton.textContent='Adicionar endereço';
-    document.querySelectorAll('.tab').forEach(tab=>tab.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));tab.classList.add('active')}));
-    document.querySelector('#change-address').addEventListener('click',()=>modal.classList.add('open'));
-    document.querySelector('#cancel-address').addEventListener('click',()=>modal.classList.remove('open'));
-    document.querySelector('#address-form').addEventListener('submit',e=>{e.preventDefault();const value=id=>document.querySelector(id).value.trim(),complement=value('#complement');address.classList.add('address-summary');address.textContent='📍 '+value('#street')+', '+value('#number')+(complement?' — '+complement:'')+' — '+value('#district')+', '+value('#city')+'/'+value('#state').toUpperCase()+' — CEP '+value('#cep');addressButton.textContent='Alterar endereço';modal.classList.remove('open')});
-    document.querySelector('[name=payment]').addEventListener('change',()=>{finish.disabled=false;finish.textContent='Comprar agora'});
-    finish.addEventListener('click',()=>payment.classList.add('show'));
+    const modal=document.querySelector('#address-modal'),address=document.querySelector('.address strong'),addressButton=document.querySelector('#change-address'),finish=document.querySelector('#finish'),payment=document.querySelector('#pix-modal'),copyButton=document.querySelector('#copy-payment-link'),copyStatus=document.querySelector('#copy-status');
+    function closeAddress(){modal.classList.remove('open');document.body.classList.remove('modal-open');addressButton.focus()}
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'&&modal.classList.contains('open'))closeAddress()});
+    modal.addEventListener('click',event=>{if(event.target===modal)closeAddress()});
+    modal.addEventListener('keydown',event=>{
+      if(event.key!=='Tab')return;
+      const fields=[...modal.querySelectorAll('input,button')],first=fields[0],last=fields[fields.length-1];
+      if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
+      else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+    });
+    addressButton.textContent='Alterar endereço';
+    document.querySelector('#change-address').addEventListener('click',()=>{modal.classList.add('open');document.body.classList.add('modal-open');document.querySelector('#cep').focus()});
+    document.querySelector('#cancel-address').addEventListener('click',()=>closeAddress());
+    document.querySelector('#address-form').addEventListener('submit',e=>{e.preventDefault();const value=id=>document.querySelector(id).value.trim(),complement=value('#complement');address.classList.add('address-summary');address.textContent=value('#street')+', '+value('#number')+(complement?' — '+complement:'')+' — '+value('#district')+', '+value('#city')+'/'+value('#state').toUpperCase()+' — CEP '+value('#cep');addressButton.textContent='Alterar endereço';closeAddress()});
+    document.querySelector('[name=payment]').addEventListener('change',()=>{finish.disabled=false;finish.textContent='Pagar e finalizar'});
+    const PAYMENT_LINK = 'https://link.syncpayments.com.br/aNRZ8t';
+    const paymentCode=document.querySelector('#payment-code');
+    let copyReset;
+    function openPayment(){
+      paymentCode.value=PAYMENT_LINK;
+      document.querySelector('#payment-code-label').textContent='Link de pagamento';
+      document.querySelector('#pix-instructions').textContent='Abra a página de pagamento pelo botão abaixo para acessar seu Pix. Você também pode copiar o link.';
+      copyButton.textContent='Copiar link de pagamento';
+      copyStatus.textContent='';clearTimeout(copyReset);
+      payment.showModal();document.body.classList.add('modal-open');copyButton.focus();
+    }
+    finish.addEventListener('click',openPayment);
+    paymentCode.addEventListener('click',()=>paymentCode.select());
     copyButton.addEventListener('click',async()=>{
-      const link=document.querySelector('#payment-link').textContent.trim();
       try{
-        if(navigator.clipboard&&window.isSecureContext){
-          await navigator.clipboard.writeText(link);
-        }else{
-          const input=document.createElement('textarea');
-          input.value=link;
-          input.style.position='fixed';
-          input.style.opacity='0';
-          document.body.appendChild(input);
-          input.select();
-          const copied=document.execCommand('copy');
-          input.remove();
-          if(!copied)throw new Error('Não foi possível copiar');
+        if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(paymentCode.value)}
+        else{
+          paymentCode.focus();paymentCode.select();
+          if(!document.execCommand('copy'))throw new Error('Falha ao copiar');
         }
         copyButton.textContent='Link copiado!';
-        copyStatus.textContent='O link foi copiado para a área de transferência.';
-        window.setTimeout(()=>{copyButton.textContent='Copiar link';copyStatus.textContent=''},2500);
+        copyStatus.textContent='Copiado para a área de transferência.';
+        clearTimeout(copyReset);
+        copyReset=window.setTimeout(()=>{copyButton.textContent='Copiar link de pagamento';copyStatus.textContent=''},2500);
       }catch(error){
-        copyStatus.textContent='Não foi possível copiar automaticamente. Selecione o link acima e copie.';
+        paymentCode.focus();paymentCode.select();
+        copyStatus.textContent='Selecione e copie o conteúdo do campo acima.';
       }
     });
-    document.querySelector('#close-payment').addEventListener('click',()=>payment.classList.remove('show'));
+    document.querySelector('#close-payment').addEventListener('click',()=>payment.close());
+    payment.addEventListener('close',()=>{clearTimeout(copyReset);document.body.classList.remove('modal-open');finish.focus()});
+    payment.addEventListener('click',event=>{const rect=payment.getBoundingClientRect();if(event.target===payment&&(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom))payment.close()});
   </script>
 </body>
 </html>
