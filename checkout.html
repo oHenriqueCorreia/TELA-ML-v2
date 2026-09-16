@@ -80,10 +80,9 @@
       <button class="buy" id="generate-pix" type="submit">Gerar Pix de R$ 59,90</button>
     </form>
   </dialog>
-  <dialog class="pix-dialog" id="pix-modal" aria-labelledby="pix-title" aria-describedby="pix-instructions">
+  <dialog class="pix-dialog" id="pix-modal" aria-labelledby="pix-title">
     <div class="pix-dialog-header"><h2 id="pix-title">Pagamento via Pix</h2><button class="close-pix" id="close-payment" type="button" aria-label="Fechar pagamento">×</button></div>
     <p class="pix-total">R$ 59,90</p>
-    <p class="pix-instructions" id="pix-instructions"></p>
     <div class="pix-qr" id="pix-qr" role="img" aria-label="QR Code para pagamento Pix"></div>
     <p class="pix-status" id="pix-status" role="status" aria-live="polite"></p>
     <label class="pix-code-label" for="payment-code" id="payment-code-label"></label>
@@ -132,7 +131,7 @@
         if(!window.QRCode)throw new Error('Não foi possível preparar o QR Code. Tente novamente.');
         pixCanvas.replaceChildren();
         new window.QRCode(pixCanvas,{text:data.pixCode,width:200,height:200,correctLevel:window.QRCode.CorrectLevel.M});
-        paymentCode.value=data.pixCode;document.querySelector('#pix-instructions').textContent='Escaneie o QR Code no aplicativo do seu banco ou copie o c?digo Pix abaixo.';document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar c?digo Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
+        paymentCode.value=data.pixCode;document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar c?digo Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
         customerModal.close();payment.showModal();document.body.classList.add('modal-open');copyButton.focus();pollPayment(data.identifier);
       }catch(error){customerError.textContent=error.message||'N?o foi poss?vel gerar o Pix.';}finally{generatePix.disabled=false;generatePix.textContent='Gerar Pix de R$ 59,90';}
     });
