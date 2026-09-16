@@ -4,3 +4,6 @@ gh_*_windows_amd64.zip
 .env
 .env.*
 !.env.example
+
+.vercel
+.env*
