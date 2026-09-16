@@ -115,7 +115,7 @@
     customerModal.addEventListener('close',()=>{if(!payment.open)document.body.classList.remove('modal-open');finish.focus()});
     async function pollPayment(identifier){
       clearInterval(statusTimer);
-      const check=async()=>{try{const res=await fetch('/api/payment-status?identifier='+encodeURIComponent(identifier));const data=await res.json();if(data.status==='completed'){clearInterval(statusTimer);pixStatus.textContent='Pagamento confirmado!';pixStatus.className='pix-status success';copyButton.disabled=true;}}catch{}};
+      const check=async()=>{try{const res=await fetch('/api/payment-status?identifier='+encodeURIComponent(identifier));const raw=await res.text();const data=raw?JSON.parse(raw):{};if(data.status==='completed'){clearInterval(statusTimer);pixStatus.textContent='Pagamento confirmado!';pixStatus.className='pix-status success';copyButton.disabled=true;}}catch{}};
       await check();statusTimer=setInterval(check,5000);
     }
     customerForm.addEventListener('submit',async event=>{
@@ -125,7 +125,10 @@
       generatePix.disabled=true;generatePix.textContent='Gerando Pix...';
       try{
         const response=await fetch('/api/create-pix',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({client})});
-        const data=await response.json();if(!response.ok)throw new Error(data.error||'N?o foi poss?vel gerar o Pix.');
+        const raw=await response.text();
+        let data;try{data=raw?JSON.parse(raw):{}}catch{throw new Error('A resposta do servidor n?o ? v?lida. Tente novamente em alguns instantes.')}
+        if(!response.ok)throw new Error(data.error||'A API de pagamento ainda n?o est? dispon?vel neste site.');
+        if(!data.pixCode||!data.identifier)throw new Error('A API n?o retornou uma cobran?a Pix v?lida.');
         if(!window.QRCode)throw new Error('N?o foi poss?vel preparar o QR Code. Tente novamente.');
         await window.QRCode.toCanvas(pixCanvas,data.pixCode,{width:220,margin:1,errorCorrectionLevel:'M'});
         paymentCode.value=data.pixCode;document.querySelector('#pix-instructions').textContent='Escaneie o QR Code no aplicativo do seu banco ou copie o c?digo Pix abaixo.';document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar c?digo Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
