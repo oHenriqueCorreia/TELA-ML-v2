@@ -84,7 +84,7 @@
     <div class="pix-dialog-header"><h2 id="pix-title">Pagamento via Pix</h2><button class="close-pix" id="close-payment" type="button" aria-label="Fechar pagamento">×</button></div>
     <p class="pix-total">R$ 59,90</p>
     <p class="pix-instructions" id="pix-instructions"></p>
-    <canvas class="pix-qr" id="pix-qr" width="220" height="220" aria-label="QR Code para pagamento Pix"></canvas>
+    <div class="pix-qr" id="pix-qr" role="img" aria-label="QR Code para pagamento Pix"></div>
     <p class="pix-status" id="pix-status" role="status" aria-live="polite"></p>
     <label class="pix-code-label" for="payment-code" id="payment-code-label"></label>
     <textarea class="pix-code" id="payment-code" rows="4" readonly spellcheck="false"></textarea>
@@ -92,6 +92,7 @@
     <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
     <a class="link" id="open-payment-link" href="https://link.syncpayments.com.br/aNRZ8t" target="_blank" rel="noopener noreferrer">Abrir página do Pix</a>
   </dialog>
+  <script src="qrcode.min.js"></script>
   <script>
     const modal=document.querySelector('#address-modal'),address=document.querySelector('.address strong'),addressButton=document.querySelector('#change-address'),finish=document.querySelector('#finish');
     const customerModal=document.querySelector('#customer-modal'),customerForm=document.querySelector('#customer-form'),customerError=document.querySelector('#customer-error'),generatePix=document.querySelector('#generate-pix');
@@ -128,8 +129,9 @@
         let data;try{data=raw?JSON.parse(raw):{}}catch{throw new Error('A resposta do servidor n?o ? v?lida. Tente novamente em alguns instantes.')}
         if(!response.ok)throw new Error(data.error||'A API de pagamento ainda n?o est? dispon?vel neste site.');
         if(!data.pixCode||!data.identifier)throw new Error('A API n?o retornou uma cobran?a Pix v?lida.');
-        if(!window.QRCode)throw new Error('N?o foi poss?vel preparar o QR Code. Tente novamente.');
-        await window.QRCode.toCanvas(pixCanvas,data.pixCode,{width:220,margin:1,errorCorrectionLevel:'M'});
+        if(!window.QRCode)throw new Error('Não foi possível preparar o QR Code. Tente novamente.');
+        pixCanvas.replaceChildren();
+        new window.QRCode(pixCanvas,{text:data.pixCode,width:200,height:200,correctLevel:window.QRCode.CorrectLevel.M});
         paymentCode.value=data.pixCode;document.querySelector('#pix-instructions').textContent='Escaneie o QR Code no aplicativo do seu banco ou copie o c?digo Pix abaixo.';document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar c?digo Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
         customerModal.close();payment.showModal();document.body.classList.add('modal-open');copyButton.focus();pollPayment(data.identifier);
       }catch(error){customerError.textContent=error.message||'N?o foi poss?vel gerar o Pix.';}finally{generatePix.disabled=false;generatePix.textContent='Gerar Pix de R$ 59,90';}
