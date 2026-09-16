@@ -131,12 +131,12 @@
         if(!window.QRCode)throw new Error('Não foi possível preparar o QR Code. Tente novamente.');
         pixCanvas.replaceChildren();
         new window.QRCode(pixCanvas,{text:data.pixCode,width:200,height:200,correctLevel:window.QRCode.CorrectLevel.M});
-        paymentCode.value=data.pixCode;document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar c?digo Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
+        paymentCode.value=data.pixCode;document.querySelector('#payment-code-label').textContent='Pix Copia e Cola';copyButton.textContent='Copiar código Pix';copyButton.disabled=false;pixStatus.textContent='Aguardando pagamento...';pixStatus.className='pix-status';
         customerModal.close();payment.showModal();document.body.classList.add('modal-open');copyButton.focus();pollPayment(data.identifier);
       }catch(error){customerError.textContent=error.message||'N?o foi poss?vel gerar o Pix.';}finally{generatePix.disabled=false;generatePix.textContent='Gerar Pix de R$ 59,90';}
     });
     paymentCode.addEventListener('click',()=>paymentCode.select());
-    copyButton.addEventListener('click',async()=>{try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(paymentCode.value)}else{paymentCode.focus();paymentCode.select();if(!document.execCommand('copy'))throw new Error()}copyButton.textContent='C?digo Pix copiado!';copyStatus.textContent='Copiado para a ?rea de transfer?ncia.';clearTimeout(copyReset);copyReset=setTimeout(()=>{copyButton.textContent='Copiar c?digo Pix';copyStatus.textContent=''},2500)}catch{paymentCode.focus();paymentCode.select();copyStatus.textContent='Selecione e copie o c?digo do campo acima.';}});
+    copyButton.addEventListener('click',async()=>{try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(paymentCode.value)}else{paymentCode.focus();paymentCode.select();if(!document.execCommand('copy'))throw new Error()}copyButton.textContent='Código Pix copiado!';copyStatus.textContent='Copiado para a área de transferência.';clearTimeout(copyReset);copyReset=setTimeout(()=>{copyButton.textContent='Copiar código Pix';copyStatus.textContent=''},2500)}catch{paymentCode.focus();paymentCode.select();copyStatus.textContent='Selecione e copie o c?digo do campo acima.';}});
     document.querySelector('#close-payment').addEventListener('click',()=>payment.close());
     payment.addEventListener('close',()=>{clearInterval(statusTimer);clearTimeout(copyReset);document.body.classList.remove('modal-open');finish.focus()});
   </script></body>
