@@ -13,7 +13,7 @@ export default async function handler(request, response) {
     if (!offerHash || !productHash) return sendJson(response, { error: "Os identificadores do produto Tribo Pay ainda não foram configurados." }, 503);
     const webhookUrl = process.env.TRIBOPAY_WEBHOOK_URL || getPublicUrl(request) + "/api/tribopay-webhook";
     const result = await triboPayFetch("/transactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ amount: AMOUNT_IN_CENTS, offer_hash: offerHash, payment_method: "pix", customer: { name: client.name, email: client.email, phone_number: client.phone, document: client.cpf }, cart: [{ product_hash: productHash, title: PRODUCT_TITLE, cover: null, price: AMOUNT_IN_CENTS, quantity: 1, operation_type: 1, tangible: true }], expire_in_days: 1, transaction_origin: "api", postback_url: webhookUrl }) });
-    const transaction = result.data && (result.data.data || result.data.transaction || result.data);
+    const transaction = result.data && ((result.data.data && typeof result.data.data === "object" ? result.data.data : null) || (result.data.transaction && typeof result.data.transaction === "object" ? result.data.transaction : null) || result.data);
     const pix = transaction && transaction.pix ? transaction.pix : {};
     const pixCode = transaction && (transaction.pix_code || pix.pix_qr_code || pix.pix_url);
     const qrCode = transaction && (transaction.qr_code || pix.qr_code_base64 || null);
