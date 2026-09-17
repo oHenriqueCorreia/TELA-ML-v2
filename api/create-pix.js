@@ -9,7 +9,7 @@ export default async function handler(request, response) {
     const payload = typeof request.body === "string" ? JSON.parse(request.body) : request.body;
     const client = validateCustomer(payload);
     if (!client) return sendJson(response, { error: "Informe nome, CPF, e-mail e telefone válidos." }, 422);
-    const offerHash = process.env.TRIBOPAY_OFFER_HASH || "i74ou8qbjc", productHash = process.env.TRIBOPAY_PRODUCT_HASH || "kdzbp2ak2e";
+    const offerHash = process.env.TRIBOPAY_OFFER_HASH || "kdzbp2ak2e", productHash = process.env.TRIBOPAY_PRODUCT_HASH || "i74ou8qbjc";
     if (!offerHash || !productHash) return sendJson(response, { error: "Os identificadores do produto Tribo Pay ainda não foram configurados." }, 503);
     const webhookUrl = process.env.TRIBOPAY_WEBHOOK_URL || getPublicUrl(request) + "/api/tribopay-webhook";
     const result = await triboPayFetch("/transactions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ amount: AMOUNT_IN_CENTS, offer_hash: offerHash, payment_method: "pix", customer: { name: client.name, email: client.email, phone_number: client.phone, document: client.cpf }, cart: [{ product_hash: productHash, title: PRODUCT_TITLE, cover: null, price: AMOUNT_IN_CENTS, quantity: 1, operation_type: 1, tangible: true }], expire_in_days: 1, transaction_origin: "api", postback_url: webhookUrl }) });
